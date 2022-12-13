@@ -1,0 +1,69 @@
+/******************************************************************************
+
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <bits/stdc++.h>
+using namespace std;
+//defining Node
+ struct Node {
+      int val;
+      Node *next;
+      Node() : val(0), next(nullptr) {}
+      Node(int x) : val(x), next(nullptr) {}
+  };   
+ 
+ 
+class linklist {
+public:
+    Node* head;
+    linklist() { head = NULL; }
+//insert at starting of linked list
+    Node* insert(int val)
+    {
+        Node* newNode = new Node(val);
+        newNode->next = head;
+        head = newNode;
+        return head;
+    }
+};
+
+//we create two ptrs slow and fast
+//when fast reaches n we stop moving fast
+//and move slow and fast together so when fast reaches null slow will be at nth node from last
+int nfromend(Node* head, int n) {
+        Node* fast = head;
+        Node* slow = head;
+        for(int i=0;i<n;i++){
+            fast=fast->next;
+        } 
+        
+        if(fast == NULL){
+            return -1; 
+        }
+        while(fast->next!=NULL){
+            fast=fast->next;
+            slow=slow->next;
+        }
+        int ans=slow->val;
+        return ans;
+}
+
+
+int main()
+{
+    linklist l;
+    Node* head=new Node;
+    //inserting at begining
+    head=l.insert(10);
+    head=l.insert(5);
+    head=l.insert(40);
+    head=l.insert(3);
+    head=l.insert(3);
+    int k=2;
+    int ans=nfromend(head,k);
+    cout<<ans<<endl;
+}
