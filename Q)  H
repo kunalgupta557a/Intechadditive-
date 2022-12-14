@@ -1,0 +1,4 @@
+So the program crashes at diffrent places everytime
+This could be due to variable showing undefined behaviour due to using illegal methods
+There may be memory leak or heap overflow due to data structure running out of its max limit
+Or some other process or the application  on which the program depend may be causing the problem
